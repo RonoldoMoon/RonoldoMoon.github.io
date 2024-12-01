@@ -1,0 +1,77 @@
+<html>
+
+  <head>
+    <title>SlammaCOW!</title>
+
+    <script>
+
+ 
+
+const specialCharacters = [ 0x2698,
+                            0x25B2,
+                            "*",
+                            "+",
+                            0x0001F464,
+                            "#",
+                            0x2193,
+                            0x266B,
+                            "!",
+                            0x0001f41d,
+			    "@",
+                            0x2601,
+                            0x0001f41d,
+                            "~",
+                            0x2620,
+                            0x266a,
+                            0x263a,
+                            0x2665,
+                            0x2606,
+                            0x0001f984,
+                            "$",
+                            0x0001f4a7,
+                            0x25a1,
+                            0x0001f608,
+                            0x0001f4a5,
+                            0x2191  ];
+
+
+    function test()  {
+
+      document.getElementById("textstuff").value = "boink";
+    }
+
+    function encrypt()  {
+
+      //const decoder = new TextDecoder('utf-32');
+      complete = Array();
+      forreal  = Array();
+      boink = document.getElementById("textstuff").value;
+
+      a = boink.split("");
+
+      for ( var i = 0; i < boink.length; i++ )  {
+        complete.push(boink.charCodeAt(i));
+      }
+ 
+      for ( var i = 0; i < boink.length; i++ )  {
+        complete[i] -= 97;
+        forreal.push(String.fromCharCode(specialCharacters[complete[i]])); 
+    //    forreal.push(specialCharacters[complete[i]]); 
+      }
+      
+      document.getElementById("textstuff").value = forreal.join("");
+      //document.getElementById("textstuff").value = decoder.decode(forreal);
+    }
+
+    </script>
+
+  <head>
+
+  <body>
+
+  <h4> secret encryption tool </h4>
+  <hr>  
+  <br>
+  <button onclick='encrypt();'>Encrypt</button>
+  <input id='textstuff' type='text'>
+  <button onclick='alert("not implemented yet");'>Decrypt</button> 
